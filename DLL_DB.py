@@ -28,3 +28,10 @@ class Database(DoubleLL):
         cursor.execute(f"""INSERT INTO val (value) VALUES ('{val}')""")
         self.connection.commit()
         cursor.close()
+
+    def delete(self):
+        cursor = self.connection.cursor()
+        cursor.execute("""DELETE * FROM val""")
+        self.connection.commit()
+        cursor.close()
+

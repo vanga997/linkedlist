@@ -24,8 +24,6 @@ class FunctionalTest(TestCase):
             if isinstance(window, PushFirst):
                 dialog = window
                 break
-        else:
-            self.fail()
 
         dialog.lineEdit.setText("1")
         QTest.mouseClick(dialog.pushButton, QtCore.Qt.MouseButton.LeftButton)
@@ -38,8 +36,6 @@ class FunctionalTest(TestCase):
             if isinstance(window, PushEnd):
                 dialog = window
                 break
-        else:
-            self.fail()
 
         self.facade.push_first(1)
 
@@ -61,9 +57,6 @@ class FunctionalTest(TestCase):
                 dialog = window
                 break
 
-        else:
-            self.fail()
-
         self.facade.push_first(1)
 
         dialog.lineEdit.setText("10")
@@ -83,9 +76,6 @@ class FunctionalTest(TestCase):
             if isinstance(window, PushBefore):
                 dialog = window
                 break
-
-        else:
-            self.fail()
 
         self.facade.push_first(1)
         self.facade.push_end(5)
@@ -107,9 +97,6 @@ class FunctionalTest(TestCase):
             if isinstance(window, PushAfter):
                 dialog = window
                 break
-
-        else:
-            self.fail()
 
         self.facade.push_first(1)
         self.facade.push_end(5)
@@ -151,9 +138,6 @@ class FunctionalTest(TestCase):
                 dialog = window
                 break
 
-        else:
-            self.fail()
-
         dialog.lineEdit.setText("10")
         QTest.mouseClick(dialog.pushButton, QtCore.Qt.MouseButton.LeftButton)
 
@@ -165,3 +149,35 @@ class FunctionalTest(TestCase):
 
         btn_reverse = self.window.ui.btn_reverse
         QTest.mouseClick(btn_reverse, QtCore.Qt.MouseButton.LeftButton)
+
+    def test10_delete(self):
+        self.facade.push_first(10)
+        self.facade.push_end(20)
+        self.facade.push_end(30)
+
+        btn_del_all = self.window.ui.btn_del_all
+        QTest.mouseClick(btn_del_all, QtCore.Qt.MouseButton.LeftButton)
+
+    def test11_save(self):
+        self.facade.push_first(10)
+        self.facade.push_end(20)
+        self.facade.push_end(30)
+
+        btn_save = self.window.ui.btn_save
+        QTest.mouseClick(btn_save, QtCore.Qt.MouseButton.LeftButton)
+
+    def test12_load(self):
+        self.facade.push_first(10)
+        self.facade.push_end(30)
+
+        self.facade.save_list()
+
+        self.facade.push_end(90)
+
+        btn_load = self.window.ui.btn_load
+        QTest.mouseClick(btn_load, QtCore.Qt.MouseButton.LeftButton)
+
+
+
+
+

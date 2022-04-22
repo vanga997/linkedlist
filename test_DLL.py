@@ -9,7 +9,7 @@ class TestDoubleLinkedList(TestCase):
     def test_first_push(self):
         self.DLL.first_push(4)
         self.assertEqual(4, 4)
-        print(self.DLL.output())
+        self.DLL.output()
 
     def test_push_front(self):
         self.DLL.first_push(4)
@@ -61,3 +61,9 @@ class TestDoubleLinkedList(TestCase):
         self.DLL.reverse_list()
         self.assertEqual(self.DLL.head, self.DLL.head)
         print(self.DLL.output())
+
+    def test_output(self):
+        self.DLL.first_push(10)
+        self.DLL.push_end(15)
+        self.DLL.push_end(20)
+        self.DLL.output()

@@ -38,3 +38,5 @@ DLL.delete_by_value(3)
 DLL.reverse_list()
 
 DLL.save_list()
+
+DLL.output()

@@ -9,6 +9,7 @@ class Node:
 
 
 class DoubleLL:
+
     def __init__(self):
         self.head = None
 
@@ -149,21 +150,19 @@ class DoubleLL:
         if self.head is None:
             print("list is empty")
             return
-
         temp = self.head
         next = temp.next
         temp.next = None
         temp.prev = next
-
         while next is not None:
             next.prev = next.next
             next.next = temp
             temp = next
             next = next.prev
-
         self.head = temp
 
     def output(self):
+        self.list = []
         if self.head is None:
             print("list is empty")
             return
@@ -171,8 +170,10 @@ class DoubleLL:
             node = self.head
             while node is not None:
                 print(node.data, end='->')
-                print(type(node.data))
+                self.list.append(node.data)
                 node = node.next
+            print()
+            print(self.list)
 
     def save_list(self):
         self.list = []

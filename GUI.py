@@ -96,9 +96,39 @@ class PushFirst(QWidget):
         self.pushButton.clicked.connect(self.push)
 
     def push(self):
-        self.data = int(self.lineEdit.text())
-        self.facade.push_first(self.data)
-        self.link.build()
+        self.data = self.lineEdit.text()
+        if self.data == '':
+            self.warning_no_nums()
+        elif self.data.isnumeric() is False:
+            self.warning_no_int()
+        else:
+            self.data = int(self.data)
+            self.facade.push_first(self.data)
+            self.link.build()
+
+    def warning_no_int(self):
+        """
+        Создание MessageBox, если данные содержат буквы и символы.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Введите число!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
+    def warning_no_nums(self):
+        """
+        Создание MessageBox, если данные не введены.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Заполните поле!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
 
 
 class PushFront(QWidget):
@@ -110,9 +140,40 @@ class PushFront(QWidget):
         self.pushButton.clicked.connect(self.push)
 
     def push(self):
-        self.data = int(self.lineEdit.text())
-        self.facade.push_front(self.data)
-        self.link.build()
+        self.data = self.lineEdit.text()
+        if self.data == '':
+            self.warning_no_nums()
+        elif self.data.isnumeric() is False:
+            self.warning_no_int()
+        else:
+            self.data = int(self.data)
+            self.facade.push_front(self.data)
+            self.link.build()
+
+    def warning_no_int(self):
+        """
+        Создание MessageBox, если данные содержат буквы и символы.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Введите число!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
+    def warning_no_nums(self):
+        """
+        Создание MessageBox, если данные не введены.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Заполните поле!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
 
 
 class PushEnd(QWidget):
@@ -127,7 +188,7 @@ class PushEnd(QWidget):
         self.data = self.lineEdit.text()
         if self.data == '':
             self.warning_no_nums()
-        elif self.data.isnumeric() == False:
+        elif self.data.isnumeric() is False:
             self.warning_no_int()
         else:
             self.data = int(self.data)
@@ -144,7 +205,6 @@ class PushEnd(QWidget):
         messagebox_del.setText("Введите число!")
         messagebox_del.setIcon(QMessageBox.Warning)
         messagebox_del.setStandardButtons(QMessageBox.Ok)
-
         messagebox_del.show()
 
     def warning_no_nums(self):
@@ -157,7 +217,6 @@ class PushEnd(QWidget):
         messagebox_del.setText("Заполните поле!")
         messagebox_del.setIcon(QMessageBox.Warning)
         messagebox_del.setStandardButtons(QMessageBox.Ok)
-
         messagebox_del.show()
 
 
@@ -170,11 +229,43 @@ class PushAfter(QWidget):
         self.pushButton.clicked.connect(self.push_after)
 
     def push_after(self):
-        self.current = int(self.lineEdit.text())
-        self.data = int(self.lineEdit_2.text())
+        self.current = self.lineEdit.text()
+        self.data = self.lineEdit_2.text()
 
-        self.facade.insert_after(self.current, self.data)
-        self.link.build()
+        if self.current or self.data == '':
+            self.warning_no_int()
+        elif self.current.isnumeric() is False or self.data.isnumeric is False:
+            self.warning_no_nums()
+        else:
+            self.current = int(self.current)
+            self.data = int(self.data)
+            self.facade.insert_after(self.current, self.data)
+            self.link.build()
+
+    def warning_no_int(self):
+        """
+        Создание MessageBox, если данные содержат буквы и символы.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Введите число!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
+    def warning_no_nums(self):
+        """
+        Создание MessageBox, если данные не введены.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Заполните поле!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
 
 
 class PushBefore(QWidget):
@@ -186,11 +277,43 @@ class PushBefore(QWidget):
         self.pushButton.clicked.connect(self.push_before)
 
     def push_before(self):
-        self.current = int(self.lineEdit.text())
-        self.data = int(self.lineEdit_2.text())
+        self.current = self.lineEdit.text()
+        self.data = self.lineEdit_2.text()
 
-        self.facade.insert_before(self.current, self.data)
-        self.link.build()
+        if self.current or self.data == '':
+            self.warning_no_int()
+        elif self.current.isnumeric() is False or self.data.isnumeric is False:
+            self.warning_no_nums()
+        else:
+            self.current = int(self.current)
+            self.data = int(self.data)
+            self.facade.insert_before(self.current, self.data)
+            self.link.build()
+
+    def warning_no_int(self):
+        """
+        Создание MessageBox, если данные содержат буквы и символы.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Введите число!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
+    def warning_no_nums(self):
+        """
+        Создание MessageBox, если данные не введены.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Заполните поле!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
 
 
 class DeleteValue(QWidget):
@@ -202,10 +325,40 @@ class DeleteValue(QWidget):
         self.pushButton.clicked.connect(self.delete_value)
 
     def delete_value(self):
-        self.data = int(self.lineEdit.text())
+        self.data = self.lineEdit.text()
+        if self.data == '':
+            self.warning_no_nums()
+        elif self.data.isnumeric() is False:
+            self.warning_no_int()
+        else:
+            self.data = int(self.data)
+            self.facade.delete_by_value(self.data)
+            self.link.build()
 
-        self.facade.delete_by_value(self.data)
-        self.link.build()
+    def warning_no_int(self):
+        """
+        Создание MessageBox, если данные содержат буквы и символы.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Введите число!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
+    def warning_no_nums(self):
+        """
+        Создание MessageBox, если данные не введены.
+        :return: None
+        """
+        messagebox_del = QMessageBox(self)
+        messagebox_del.setWindowTitle("Ошибка ввода")
+        messagebox_del.setText("Заполните поле!")
+        messagebox_del.setIcon(QMessageBox.Warning)
+        messagebox_del.setStandardButtons(QMessageBox.Ok)
+        messagebox_del.show()
+
 
 
 class Builder:
